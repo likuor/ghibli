@@ -1,11 +1,11 @@
-import React from 'react';
-import Api from './components/Api/Api';
+import { FC } from 'react';
+import Main from './components/Layout/MainLayout';
+import './App.css';
 
-const App: React.FC = () => {
+const App: FC = () => {
   return (
     <div className='App'>
-      <Api />
-      <span>Ghibli Collection</span>
+      <Main />
     </div>
   );
 };
