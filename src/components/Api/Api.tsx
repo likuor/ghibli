@@ -1,4 +1,13 @@
 import { useState, useEffect } from 'react';
+import {
+  EditOutlined,
+  EllipsisOutlined,
+  SettingOutlined,
+} from '@ant-design/icons';
+import { Avatar, Card } from 'antd';
+import style from './Api.module.css';
+
+const { Meta } = Card;
 
 const Api = () => {
   const [films, setFilms] = useState<any[]>([]);
@@ -9,26 +18,30 @@ const Api = () => {
       .then((res) => res.json())
       .then((res) => setFilms(res));
   }, []);
+
   // console.log(films);
 
   return (
     <div>
-      <ul>
+      <ul className={style.cardContainer}>
         {films &&
           films.map((film, index) => (
             <li key={index}>
-              <div>
-                <div>
-                  <img src={film.image} alt={film.title} />
-                </div>
-                <div>
-                  <p>
-                    {film.title} / {film.original_title}
-                  </p>
-                  <p>{film.description}</p>
-                  <p>{film.release_date}</p>
-                </div>
-              </div>
+              <Card
+                className={style.card}
+                cover={<img src={film.image} alt={film.title} />}
+                actions={[
+                  <SettingOutlined key='setting' />,
+                  <EditOutlined key='edit' />,
+                  <EllipsisOutlined key='ellipsis' />,
+                ]}
+              >
+                <Meta
+                  avatar={<Avatar src='https://joeschmoe.io/api/v1/random' />}
+                  title={film.title}
+                  description={`Rating: ${film.rt_score}`}
+                />
+              </Card>
             </li>
           ))}
       </ul>

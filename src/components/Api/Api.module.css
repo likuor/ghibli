@@ -1,0 +1,10 @@
+.cardContainer {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  width: 300px;
+  margin: 2vh auto;
+}
