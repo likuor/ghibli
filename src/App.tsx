@@ -1,11 +1,11 @@
 import { FC } from 'react';
-import Main from './components/Layout/MainLayout';
+import MainLayout from './Layout/MainLayout';
 import './App.css';
 
 const App: FC = () => {
   return (
     <div className='App'>
-      <Main />
+      <MainLayout />
     </div>
   );
 };

@@ -1,14 +1,13 @@
+import React from 'react';
 import {
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
 } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
-import Api from '../Api/Api';
-import React from 'react';
+import CardList from '../pages/CardList';
 
 const { Header, Content, Footer, Sider } = Layout;
-
 const Main = () => (
   <Layout>
     <Sider
@@ -67,7 +66,7 @@ const Main = () => (
             minHeight: 360,
           }}
         >
-          <Api />
+          <CardList />
         </div>
       </Content>
       <Footer
