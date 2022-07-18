@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import {
-  EditOutlined,
-  EllipsisOutlined,
-  SettingOutlined,
+  LikeOutlined,
+  HeartOutlined,
+  DislikeOutlined,
 } from '@ant-design/icons';
 import { Avatar, Card } from 'antd';
 import style from './Api.module.css';
@@ -26,14 +26,13 @@ const Api = () => {
       <ul className={style.cardContainer}>
         {films &&
           films.map((film, index) => (
-            <li key={index}>
+            <li key={index} className={style.card}>
               <Card
-                className={style.card}
                 cover={<img src={film.image} alt={film.title} />}
                 actions={[
-                  <SettingOutlined key='setting' />,
-                  <EditOutlined key='edit' />,
-                  <EllipsisOutlined key='ellipsis' />,
+                  <LikeOutlined key='like' />,
+                  <HeartOutlined key='heart' />,
+                  <DislikeOutlined key='dislike' />,
                 ]}
               >
                 <Meta
