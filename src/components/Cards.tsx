@@ -1,7 +1,9 @@
+import { useSelector, useDispatch } from 'react-redux';
 import React from 'react';
 import {
   LikeOutlined,
   HeartOutlined,
+  HeartFilled,
   DislikeOutlined,
 } from '@ant-design/icons';
 import { Avatar, Card } from 'antd';
@@ -15,12 +17,28 @@ const { Meta } = Card;
 const Cards: React.FC<Props> = (props) => {
   const { film } = props;
 
+  const favoriteData = useSelector((state: any) => state.favoriteReducer);
+  const dispatch = useDispatch();
+
+  const changeFavorite = () => {
+    const list = favoriteData.film.map((obj: any) => {
+      return obj.id;
+    });
+    if (list.includes(film.id)) {
+      dispatch({ type: 'REMOVE', film: film });
+    } else {
+      dispatch({ type: 'ADD', film: film });
+    }
+    console.log(favoriteData);
+  };
+
   return (
     <Card
+      hoverable
       cover={<img src={film.image} alt={film.title} />}
       actions={[
         <LikeOutlined key='like' />,
-        <HeartOutlined key='heart' />,
+        <HeartOutlined key='heart' onClick={changeFavorite} />,
         <DislikeOutlined key='dislike' />,
       ]}
     >
