@@ -1,21 +1,24 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Cards from '../components/Cards';
 import style from './CardList.module.css';
-import FetchApi from '../helper/FetchApi';
 
 const CardList = () => {
-  const [films, setFilms] = useState<any>([]);
+  const dispatch = useDispatch();
+  const films = useSelector((state: any) => state.fetchApiReducer);
 
   useEffect(() => {
-    FetchApi()
-      .then((data) => {
-        setFilms(data);
-        // console.log(data);
-      })
-      .catch((error) => {
-        console.log('ERROR', error);
+    const getFilms = async () => {
+      const res = await fetch('https://ghibliapi.herokuapp.com/films');
+      const data = await res.json();
+
+      dispatch({
+        type: 'GET_FILM_DATA',
+        payload: data,
       });
-  }, []);
+    };
+    getFilms();
+  }, [dispatch]);
 
   return (
     <ul className={style.cardContainer}>

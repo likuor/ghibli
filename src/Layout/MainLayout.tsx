@@ -1,12 +1,10 @@
 import React from 'react';
-import {
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from '@ant-design/icons';
+import { HeartOutlined, HomeOutlined } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import CardList from '../pages/CardList';
-import Favorite from '../components/Favorite/Favorite';
+import Favorite from '../pages/FavoriteList';
+
+import { Routes, Route, Link } from 'react-router-dom';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -37,17 +35,19 @@ const Main = () => {
         <Menu
           theme='light'
           mode='inline'
-          defaultSelectedKeys={['4']}
+          defaultSelectedKeys={['1']}
           items={[
-            UserOutlined,
-            VideoCameraOutlined,
-            UploadOutlined,
-            UserOutlined,
-          ].map((icon, index) => ({
-            key: String(index + 1),
-            icon: React.createElement(icon),
-            label: `nav ${index + 1}`,
-          }))}
+            {
+              key: '1',
+              icon: <HomeOutlined />,
+              label: <Link to='/'>Home</Link>,
+            },
+            {
+              key: '2',
+              icon: <HeartOutlined />,
+              label: <Link to='/favorite'>Favorite</Link>,
+            },
+          ]}
         />
       </Sider>
       <Layout>
@@ -69,8 +69,10 @@ const Main = () => {
               minHeight: 360,
             }}
           >
-            <Favorite />
-            <CardList />
+            <Routes>
+              <Route path='/' element={<CardList />} />;
+              <Route path='/favorite' element={<Favorite />} />;
+            </Routes>
           </div>
         </Content>
         <Footer

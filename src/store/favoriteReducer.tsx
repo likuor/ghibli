@@ -4,13 +4,12 @@ export const favoriteReducer = (
   },
   action: any
 ) => {
-  // console.log(state);
   switch (action.type) {
-    case 'ADD':
+    case 'ADD_FAVORITE':
       state.film.push(action.film);
       return state;
 
-    case 'REMOVE':
+    case 'REMOVE_FAVORITE':
       const filmKey = state.film.findIndex((element: any) => {
         return element.id === action.film.id;
       });
