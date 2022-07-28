@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import React from 'react';
 import {
@@ -18,16 +19,17 @@ const Cards: React.FC<Props> = (props) => {
 
   const favoriteData = useSelector((state: any) => state.favoriteReducer);
   const dispatch = useDispatch();
-  const changeFavorite = () => {
-    const list = favoriteData.film.map((obj: any) => {
-      return obj.id;
-    });
-    if (list.includes(film.id)) {
+
+  const changeFavorite = (film: any) => {
+    if (favoriteData.film.find((favFilm: any) => favFilm.id === film.id)) {
+      console.log('remove', film.title);
       dispatch({ type: 'REMOVE_FAVORITE', film: film });
+      return 'gray';
     } else {
+      console.log('add', film.title);
       dispatch({ type: 'ADD_FAVORITE', film: film });
+      return 'red';
     }
-    console.log(favoriteData);
   };
 
   return (
@@ -36,7 +38,16 @@ const Cards: React.FC<Props> = (props) => {
       cover={<img src={film.image} alt={film.title} />}
       actions={[
         <LikeOutlined key='like' />,
-        <HeartOutlined key='heart' onClick={changeFavorite} />,
+        <HeartOutlined
+          key='heart'
+          onClick={() => changeFavorite(film)}
+          // style={{
+          //   color: favoriteData.film[0].color ? 'red' : 'gray',
+          // }}
+          style={{
+            color: changeFavorite(film),
+          }}
+        />,
         <DislikeOutlined key='dislike' />,
       ]}
     >

@@ -6,7 +6,7 @@ export const favoriteReducer = (
 ) => {
   switch (action.type) {
     case 'ADD_FAVORITE':
-      state.film.push(action.film);
+      state.film = [...state.film, action.film];
       return state;
 
     case 'REMOVE_FAVORITE':
