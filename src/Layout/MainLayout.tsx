@@ -3,7 +3,7 @@ import { HeartOutlined, HomeOutlined } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import CardList from '../pages/CardList';
 import Favorite from '../pages/FavoriteList';
-
+import SearchBar from '../components/SearchBar';
 import { Routes, Route, Link } from 'react-router-dom';
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -54,9 +54,12 @@ const Main = () => {
         <Header
           className='site-layout-sub-header-background'
           style={{
-            padding: 20,
+            padding: '2vw',
           }}
-        />
+        >
+          <SearchBar />
+        </Header>
+
         <Content
           style={{
             margin: '24px 16px 0',

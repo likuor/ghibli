@@ -1,11 +1,9 @@
 import { createStore, combineReducers } from 'redux';
-import { favoriteReducer } from './favoriteReducer';
-import { likeReducer } from './likeReducer';
-import { fetchApiReducer } from './fetchApiReducer';
+import { favoriteReducer } from '../favorites/favoriteReducer';
+import { fetchApiReducer } from '../getApi/fetchApiReducer';
 
 const rootReducer = combineReducers({
   favoriteReducer,
-  likeReducer,
   fetchApiReducer,
 });
 
