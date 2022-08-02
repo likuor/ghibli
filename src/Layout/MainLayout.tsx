@@ -1,10 +1,10 @@
-import React from 'react';
 import { HeartOutlined, HomeOutlined } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import CardList from '../pages/CardList';
 import FavoriteList from '../pages/FavoriteList';
 import SearchBar from '../components/SearchBar';
 import { Routes, Route, Link } from 'react-router-dom';
+import FetchApi from '../helper/FetchApi';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -73,7 +73,7 @@ const Main = () => {
             }}
           >
             <Routes>
-              <Route path='/' element={<CardList />} />;
+              <Route path='/' element={<CardList films={FetchApi()} />} />;
               <Route path='/favorite' element={<FavoriteList />} />;
             </Routes>
           </div>

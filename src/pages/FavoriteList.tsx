@@ -10,7 +10,7 @@ const Favorite = () => {
       {favoriteData &&
         favoriteData.map((film: any, index: number) => (
           <li key={index} className={style.card}>
-            <Cards film={film} />
+            <Cards film={film} color={film.color} />
           </li>
         ))}
     </ul>

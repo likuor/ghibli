@@ -9,25 +9,22 @@ import { Avatar, Card } from 'antd';
 
 type Props = {
   film: any;
+  color: string;
 };
-
 const { Meta } = Card;
 
 const Cards: React.FC<Props> = (props) => {
-  const { film } = props;
-
+  const { film, color } = props;
   const favoriteData = useSelector((state: any) => state.favorites);
   const dispatch = useDispatch();
 
   const changeFavorite = (film: any) => {
     if (favoriteData.find((favFilm: any) => favFilm.id === film.id)) {
       console.log('remove', film.title);
-      dispatch({ type: 'REMOVE_FAVORITE', payload: film });
-      return 'gray';
+      dispatch({ type: 'REMOVE_FAVORITE', payload: film, color: 'gray' });
     } else {
       console.log('add', film.title);
-      dispatch({ type: 'ADD_FAVORITE', payload: film });
-      return 'red';
+      dispatch({ type: 'ADD_FAVORITE', payload: film, color: 'red' });
     }
   };
 
@@ -40,15 +37,9 @@ const Cards: React.FC<Props> = (props) => {
         <HeartOutlined
           key='heart'
           onClick={() => changeFavorite(film)}
-          // style={{
-          //   color: favoriteData.color ? 'red' : 'gray',
-          // }}
-          // style={{
-          //   color: 'red',
-          // }}
-          // style={{
-          //   color: changeFavorite(film),
-          // }}
+          style={{
+            color: color,
+          }}
         />,
         <DislikeOutlined key='dislike' />,
       ]}
