@@ -4,7 +4,6 @@ import Cards from '../components/Cards';
 import style from './CardList.module.css';
 
 const CardList = () => {
-  // const films = useSelector((state: any) => state.fetchApiReducer);
   const films = useSelector((state: any) => state.api);
   const dispatch = useDispatch();
 

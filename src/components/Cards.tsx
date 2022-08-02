@@ -30,7 +30,6 @@ const Cards: React.FC<Props> = (props) => {
       return 'red';
     }
   };
-  console.log(...favoriteData);
 
   return (
     <Card
