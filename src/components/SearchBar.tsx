@@ -7,7 +7,7 @@ const onSearch = (value: string) => console.log(value);
 const SearchBar: React.FC = () => {
   const redux = useSelector((state: any) => state);
   const dispatch = useDispatch();
-  console.log(redux);
+  // console.log(redux);
 
   return (
     <>

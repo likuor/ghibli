@@ -4,8 +4,9 @@ import Cards from '../components/Cards';
 import style from './CardList.module.css';
 
 const CardList = () => {
+  // const films = useSelector((state: any) => state.fetchApiReducer);
+  const films = useSelector((state: any) => state.api);
   const dispatch = useDispatch();
-  const films = useSelector((state: any) => state.fetchApiReducer);
 
   useEffect(() => {
     const getFilms = async () => {
@@ -13,7 +14,7 @@ const CardList = () => {
       const data = await res.json();
 
       dispatch({
-        type: 'GET_FILM_DATA',
+        type: 'GET_API_DATA',
         payload: data,
       });
     };

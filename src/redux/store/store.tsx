@@ -18,8 +18,8 @@ import { favoriteReducer } from '../favorites/reducers';
 // }
 
 const rootReducer = combineReducers({
-  favoriteReducer,
-  getApiReducer,
+  favorites: favoriteReducer,
+  api: getApiReducer,
 });
 
 const store = createStore(rootReducer);

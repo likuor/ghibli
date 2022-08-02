@@ -9,11 +9,11 @@ export const favoriteReducer = (
     case Actions.ADD_FAVORITE:
       return (state = [...state, action.payload]);
 
-    case 'REMOVE_FAVORITE':
-      const filmKey = state.film.findIndex((element: any) => {
-        return element.id === action.film.id;
+    case Actions.REMOVE_FAVORITE:
+      const filmKey = state.findIndex((element: any) => {
+        return element.id === action.payload.id;
       });
-      state.film.splice(filmKey, 1);
+      state.splice(filmKey, 1);
       return state;
 
     default:

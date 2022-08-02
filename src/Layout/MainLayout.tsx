@@ -2,7 +2,7 @@ import React from 'react';
 import { HeartOutlined, HomeOutlined } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import CardList from '../pages/CardList';
-import Favorite from '../pages/FavoriteList';
+import FavoriteList from '../pages/FavoriteList';
 import SearchBar from '../components/SearchBar';
 import { Routes, Route, Link } from 'react-router-dom';
 
@@ -74,7 +74,7 @@ const Main = () => {
           >
             <Routes>
               <Route path='/' element={<CardList />} />;
-              <Route path='/favorite' element={<Favorite />} />;
+              <Route path='/favorite' element={<FavoriteList />} />;
             </Routes>
           </div>
         </Content>

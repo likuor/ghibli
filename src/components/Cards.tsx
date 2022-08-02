@@ -16,20 +16,21 @@ const { Meta } = Card;
 const Cards: React.FC<Props> = (props) => {
   const { film } = props;
 
-  const favoriteData = useSelector((state: any) => state.favoriteReducer);
+  const favoriteData = useSelector((state: any) => state.favorites);
   const dispatch = useDispatch();
 
   const changeFavorite = (film: any) => {
-    if (favoriteData.film.find((favFilm: any) => favFilm.id === film.id)) {
+    if (favoriteData.find((favFilm: any) => favFilm.id === film.id)) {
       console.log('remove', film.title);
-      dispatch({ type: 'REMOVE_FAVORITE', film: film });
+      dispatch({ type: 'REMOVE_FAVORITE', payload: film });
       return 'gray';
     } else {
       console.log('add', film.title);
-      dispatch({ type: 'ADD_FAVORITE', film: film });
+      dispatch({ type: 'ADD_FAVORITE', payload: film });
       return 'red';
     }
   };
+  console.log(...favoriteData);
 
   return (
     <Card
@@ -41,11 +42,14 @@ const Cards: React.FC<Props> = (props) => {
           key='heart'
           onClick={() => changeFavorite(film)}
           // style={{
-          //   color: favoriteData.film[0].color ? 'red' : 'gray',
+          //   color: favoriteData.color ? 'red' : 'gray',
           // }}
-          style={{
-            color: changeFavorite(film),
-          }}
+          // style={{
+          //   color: 'red',
+          // }}
+          // style={{
+          //   color: changeFavorite(film),
+          // }}
         />,
         <DislikeOutlined key='dislike' />,
       ]}
