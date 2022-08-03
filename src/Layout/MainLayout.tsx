@@ -85,7 +85,7 @@ const Main = () => {
             textAlign: 'center',
           }}
         >
-          Ant Design ©2018 Created by Ant UED
+          Ghibli Exhibition ©2022 Created by Koki Sakai
         </Footer>
       </Layout>
     </Layout>

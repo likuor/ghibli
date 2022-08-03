@@ -36,7 +36,7 @@ const SearchBar: React.FC = () => {
   return (
     <>
       <Input
-        placeholder='input search text'
+        placeholder='Search Title'
         onChange={handleChange}
         prefix={<SearchOutlined />}
       />

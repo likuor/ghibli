@@ -2,7 +2,7 @@ import { FC } from 'react';
 import MainLayout from './Layout/MainLayout';
 import './App.css';
 
-const App: FC = (props) => {
+const App: FC = () => {
   return (
     <div className='App'>
       <MainLayout />

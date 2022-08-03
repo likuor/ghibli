@@ -1,10 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import React from 'react';
-import {
-  LikeOutlined,
-  HeartOutlined,
-  DislikeOutlined,
-} from '@ant-design/icons';
+import { LikeOutlined, HeartFilled, DislikeOutlined } from '@ant-design/icons';
 import { Avatar, Card } from 'antd';
 
 type Props = {
@@ -34,7 +30,7 @@ const Cards: React.FC<Props> = (props) => {
       cover={<img src={film.image} alt={film.title} />}
       actions={[
         <LikeOutlined key='like' />,
-        <HeartOutlined
+        <HeartFilled
           key='heart'
           onClick={() => changeFavorite(film)}
           style={{
