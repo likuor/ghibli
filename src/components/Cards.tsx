@@ -9,25 +9,23 @@ import { Avatar, Card } from 'antd';
 
 type Props = {
   film: any;
+  color: string;
 };
-
 const { Meta } = Card;
 
 const Cards: React.FC<Props> = (props) => {
-  const { film } = props;
-
-  const favoriteData = useSelector((state: any) => state.favoriteReducer);
+  const { film, color } = props;
+  const favoriteData = useSelector((state: any) => state.favorites);
   const dispatch = useDispatch();
-  const changeFavorite = () => {
-    const list = favoriteData.film.map((obj: any) => {
-      return obj.id;
-    });
-    if (list.includes(film.id)) {
-      dispatch({ type: 'REMOVE_FAVORITE', film: film });
+
+  const changeFavorite = (film: any) => {
+    if (favoriteData.find((favFilm: any) => favFilm.id === film.id)) {
+      console.log('remove', film.title);
+      dispatch({ type: 'REMOVE_FAVORITE', payload: film, color: 'gray' });
     } else {
-      dispatch({ type: 'ADD_FAVORITE', film: film });
+      console.log('add', film.title);
+      dispatch({ type: 'ADD_FAVORITE', payload: film, color: 'red' });
     }
-    console.log(favoriteData);
   };
 
   return (
@@ -36,7 +34,13 @@ const Cards: React.FC<Props> = (props) => {
       cover={<img src={film.image} alt={film.title} />}
       actions={[
         <LikeOutlined key='like' />,
-        <HeartOutlined key='heart' onClick={changeFavorite} />,
+        <HeartOutlined
+          key='heart'
+          onClick={() => changeFavorite(film)}
+          style={{
+            color: color,
+          }}
+        />,
         <DislikeOutlined key='dislike' />,
       ]}
     >
