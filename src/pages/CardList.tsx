@@ -10,12 +10,17 @@ const CardList: React.FC<Props> = (props) => {
 
   return (
     <ul className={style.cardContainer}>
-      {films &&
-        films.api.map((film: any, index: number) => (
-          <li key={index} className={style.card}>
-            <Cards film={film} color={film.color} />
-          </li>
-        ))}
+      {films && films.search.length !== 0
+        ? films.search.map((film: any, index: number) => (
+            <li key={index} className={style.card}>
+              <Cards film={film} color={film.color} />
+            </li>
+          ))
+        : films.api.map((film: any, index: number) => (
+            <li key={index} className={style.card}>
+              <Cards film={film} color={film.color} />
+            </li>
+          ))}
     </ul>
   );
 };

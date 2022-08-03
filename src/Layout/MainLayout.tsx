@@ -5,10 +5,13 @@ import FavoriteList from '../pages/FavoriteList';
 import SearchBar from '../components/SearchBar';
 import { Routes, Route, Link } from 'react-router-dom';
 import FetchApi from '../helper/FetchApi';
+import { useSelector } from 'react-redux';
 
 const { Header, Content, Footer, Sider } = Layout;
 
 const Main = () => {
+  const test = useSelector((state: any) => state);
+
   return (
     <Layout>
       <Sider
@@ -51,12 +54,7 @@ const Main = () => {
         />
       </Sider>
       <Layout>
-        <Header
-          className='site-layout-sub-header-background'
-          style={{
-            padding: '2vw',
-          }}
-        >
+        <Header className='site-layout-sub-header-background'>
           <SearchBar />
         </Header>
 
@@ -73,7 +71,11 @@ const Main = () => {
             }}
           >
             <Routes>
-              <Route path='/' element={<CardList films={FetchApi()} />} />;
+              <Route
+                path='/'
+                element={<CardList films={test === [] ? test : FetchApi()} />}
+              />
+              ;
               <Route path='/favorite' element={<FavoriteList />} />;
             </Routes>
           </div>
