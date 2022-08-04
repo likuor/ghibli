@@ -31,6 +31,7 @@ const SearchBar: React.FC = () => {
       type: 'SEARCH_FILM',
       payload: makeSearchResult(),
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchValue]);
 
   return (
