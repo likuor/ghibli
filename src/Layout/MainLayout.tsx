@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 const { Header, Content, Footer, Sider } = Layout;
 
 const Main = () => {
-  const test = useSelector((state: any) => state);
+  const reduxData: any = useSelector((state: any) => state);
 
   return (
     <Layout>
@@ -73,9 +73,10 @@ const Main = () => {
             <Routes>
               <Route
                 path='/'
-                element={<CardList films={test === [] ? test : FetchApi()} />}
+                element={
+                  <CardList films={reduxData === [] ? reduxData : FetchApi()} />
+                }
               />
-              ;
               <Route path='/favorite' element={<FavoriteList />} />;
             </Routes>
           </div>
