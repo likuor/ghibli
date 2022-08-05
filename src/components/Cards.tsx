@@ -1,7 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState } from 'react';
 import { LikeOutlined, HeartFilled, DislikeOutlined } from '@ant-design/icons';
-import { Avatar, Card, Modal, Button } from 'antd';
+import { Card, Modal, Button } from 'antd';
+import style from './Cards.module.css';
 
 type Props = {
   film: any;
@@ -40,6 +41,7 @@ const Cards: React.FC<Props> = (props) => {
 
   return (
     <Card
+      className={style.card}
       hoverable
       cover={<img src={film.image} alt={film.title} onClick={showModal} />}
       actions={[
@@ -55,7 +57,8 @@ const Cards: React.FC<Props> = (props) => {
       ]}
     >
       <Meta
-        avatar={<Avatar src='https://joeschmoe.io/api/v1/random' />}
+        // avatar={<Avatar src='https://joeschmoe.io/api/v1/random' />}
+        style={{ fontSize: '14px' }}
         title={film.title}
         description={`Rating: ${film.rt_score}`}
       />

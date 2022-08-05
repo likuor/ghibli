@@ -1,21 +1,18 @@
-.cardContainer {
+.cardListContainer {
   list-style: none;
   margin: 0;
   padding: 0;
+  overflow-x: scroll;
+  display: flex;
 }
 
-.card {
+.cardList {
   margin: 2vh auto;
   padding: 1vh;
 }
 
 @media (min-width: 767px) {
-  .cardContainer {
-    overflow-x: scroll;
-    display: flex;
-  }
-
-  .card img {
-    width: 300px;
+  .cardList img {
+    width: 335px;
   }
 }

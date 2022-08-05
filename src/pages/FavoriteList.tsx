@@ -6,10 +6,10 @@ const Favorite = () => {
   const favoriteData = useSelector((state: any) => state.favorites);
 
   return (
-    <ul className={style.cardContainer}>
+    <ul className={style.cardListContainer}>
       {favoriteData &&
         favoriteData.map((film: any, index: number) => (
-          <li key={index} className={style.card}>
+          <li key={index} className={style.cardList}>
             <Cards film={film} color={film.color} />
           </li>
         ))}

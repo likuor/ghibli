@@ -24,7 +24,7 @@ const CardList: React.FC<Props> = (props) => {
     switch (year) {
       case year:
         return res.map((film: any, index: number) => (
-          <li key={index} className={style.card}>
+          <li key={index} className={style.cardList}>
             <Cards film={film} color={film.color} />
           </li>
         ));
@@ -38,15 +38,15 @@ const CardList: React.FC<Props> = (props) => {
     <>
       <div>
         <Title level={3}>All movies</Title>
-        <ul className={style.cardContainer}>
+        <ul className={style.cardListContainer}>
           {films && films.search.length !== 0
             ? films.search.map((film: any, index: number) => (
-                <li key={index} className={style.card}>
+                <li key={index} className={style.cardList}>
                   <Cards film={film} color={film.color} />
                 </li>
               ))
             : films.api.map((film: any, index: number) => (
-                <li key={index} className={style.card}>
+                <li key={index} className={style.cardList}>
                   <Cards film={film} color={film.color} />
                 </li>
               ))}
@@ -60,7 +60,9 @@ const CardList: React.FC<Props> = (props) => {
             setCategoryYear={setCategoryYear}
           />
         </Title>
-        <ul className={style.cardContainer}>{renderSwitch(categoryYear)}</ul>
+        <ul className={style.cardListContainer}>
+          {renderSwitch(categoryYear)}
+        </ul>
       </div>
     </>
   );
