@@ -14,8 +14,8 @@ const CardList: React.FC<Props> = (props) => {
   const [categoryYear, setCategoryYear] = useState<string>('1980');
 
   const renderSwitch = (year: string) => {
-    const numyear = Number(year);
-    const res = films.api.filter((film: any) => {
+    const numyear: number = Number(year);
+    const res: [] = films.api.filter((film: any) => {
       return (
         film.release_date % numyear < 10 && film.release_date % numyear > 0
       );
@@ -37,7 +37,7 @@ const CardList: React.FC<Props> = (props) => {
   return (
     <>
       <div>
-        <Title level={2}>All movies</Title>
+        <Title level={3}>All movies</Title>
         <ul className={style.cardContainer}>
           {films && films.search.length !== 0
             ? films.search.map((film: any, index: number) => (
@@ -54,10 +54,10 @@ const CardList: React.FC<Props> = (props) => {
       </div>
 
       <div>
-        <Title level={2}>
+        <Title level={3}>
           <DropDowns
-            setCategoryYear={setCategoryYear}
             categoryYear={categoryYear}
+            setCategoryYear={setCategoryYear}
           />
         </Title>
         <ul className={style.cardContainer}>{renderSwitch(categoryYear)}</ul>

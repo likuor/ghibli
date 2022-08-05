@@ -10,32 +10,46 @@ type Props = {
 const DropDowns: React.FC<Props> = (props) => {
   const { categoryYear, setCategoryYear }: any = props;
 
+  const makeDropDown = () => {
+    const GHIBLI_STARTED_YEAR: number = 1980;
+    const PER_YEAR: number = 10;
+    const thisYear: number = new Date().getFullYear();
+
+    interface DropDowntObj {
+      key: string;
+      label: number;
+    }
+
+    interface DropDownArr {
+      key: string;
+      label: number;
+    }
+
+    const DropDownItems: DropDownArr[] = [];
+
+    for (
+      let index = GHIBLI_STARTED_YEAR;
+      index < thisYear;
+      index = index + PER_YEAR
+    ) {
+      const dropDwonItem: DropDowntObj = {
+        key: index.toString(),
+        label: index,
+      };
+      DropDownItems.push(dropDwonItem);
+    }
+    return DropDownItems;
+  };
+
   const menu = (
     <Menu
       selectable
       defaultSelectedKeys={['1980']}
-      onSelect={(val) => {
-        setCategoryYear(val.key);
-        return val.key;
+      onSelect={(selectVal) => {
+        setCategoryYear(selectVal.key);
+        return selectVal.key;
       }}
-      items={[
-        {
-          key: '1980',
-          label: '1980',
-        },
-        {
-          key: '1990',
-          label: '1990',
-        },
-        {
-          key: '2000',
-          label: '2000',
-        },
-        {
-          key: '2010',
-          label: '2010',
-        },
-      ]}
+      items={makeDropDown()}
     />
   );
 
@@ -44,7 +58,7 @@ const DropDowns: React.FC<Props> = (props) => {
       <Typography.Link>
         <Space>
           {categoryYear}
-          <DownOutlined />
+          <DownOutlined style={{ fontSize: '0.9vw' }} />
         </Space>
       </Typography.Link>
     </Dropdown>
