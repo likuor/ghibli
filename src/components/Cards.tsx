@@ -1,18 +1,20 @@
 import { useSelector, useDispatch } from 'react-redux';
-import React from 'react';
+import React, { useState } from 'react';
 import { LikeOutlined, HeartFilled, DislikeOutlined } from '@ant-design/icons';
-import { Avatar, Card } from 'antd';
+import { Avatar, Card, Modal, Button } from 'antd';
 
 type Props = {
   film: any;
   color: string;
 };
+
 const { Meta } = Card;
 
 const Cards: React.FC<Props> = (props) => {
-  const { film, color } = props;
-  const favoriteData = useSelector((state: any) => state.favorites);
+  const { film, color }: any = props;
+  const favoriteData: any = useSelector((state: any) => state.favorites);
   const dispatch = useDispatch();
+  const [isModalVisible, setIsModalVisible]: any = useState<boolean>(false);
 
   const changeFavorite = (film: any) => {
     if (favoriteData.find((favFilm: any) => favFilm.id === film.id)) {
@@ -24,10 +26,22 @@ const Cards: React.FC<Props> = (props) => {
     }
   };
 
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
   return (
     <Card
       hoverable
-      cover={<img src={film.image} alt={film.title} />}
+      cover={<img src={film.image} alt={film.title} onClick={showModal} />}
       actions={[
         <LikeOutlined key='like' />,
         <HeartFilled
@@ -45,6 +59,22 @@ const Cards: React.FC<Props> = (props) => {
         title={film.title}
         description={`Rating: ${film.rt_score}`}
       />
+      <Modal
+        title={film.title}
+        visible={isModalVisible}
+        onCancel={handleCancel}
+        width={1000}
+        footer={[
+          <Button key='back' type='primary' onClick={handleOk}>
+            Got it
+          </Button>,
+        ]}
+      >
+        <div>
+          <p>{film.description}</p>
+          <p>{film.release_date}</p>
+        </div>
+      </Modal>
     </Card>
   );
 };
