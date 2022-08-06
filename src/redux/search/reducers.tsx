@@ -9,7 +9,7 @@ type Action = {
 
 type State = FilmData[];
 
-export const searchFilm = (
+export const searchReducer = (
   state: State = initialState.search,
   action: Action
 ) => {
