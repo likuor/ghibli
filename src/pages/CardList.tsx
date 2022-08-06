@@ -3,26 +3,22 @@ import Cards from '../components/Cards';
 import style from './CardList.module.css';
 import { Typography } from 'antd';
 import DropDowns from '../components/DropDowns';
-import { FilmData } from '../interface/Interface';
-import { reduxDataObj } from '../interface/Interface';
+import { FilmData, reduxDataObj } from '../interface/Interface';
+import { useSelector } from 'react-redux';
 
-interface Props {
-  films: reduxDataObj;
-}
-
-const CardList: FC<Props> = (props) => {
+const CardList: FC = () => {
+  const reduxData: reduxDataObj = useSelector((state: reduxDataObj) => state);
   const { Title } = Typography;
-  const films: reduxDataObj = props.films;
   const [categoryYear, setCategoryYear] = useState<string>('1980');
 
   const renderFilms = () => {
-    return films && films.search.length !== 0
-      ? films.search.map((film: FilmData, index: number) => (
+    return reduxData && reduxData.search.length !== 0
+      ? reduxData.search.map((film: FilmData, index: number) => (
           <li key={index} className={style.cardList}>
             <Cards film={film} color={film.color} />
           </li>
         ))
-      : films.api.map((film: FilmData, index: number) => (
+      : reduxData.api.map((film: FilmData, index: number) => (
           <li key={index} className={style.cardList}>
             <Cards film={film} color={film.color} />
           </li>
@@ -30,11 +26,13 @@ const CardList: FC<Props> = (props) => {
   };
 
   const renderCategorizedFilms = (year: string) => {
-    const categorizedFilms: FilmData[] = films.api.filter((film: FilmData) => {
-      const numYear: number = Number(year);
-      const numReleaseDate: number = Number(film.release_date);
-      return numReleaseDate % numYear < 10 && 0 < numReleaseDate % numYear;
-    });
+    const categorizedFilms: FilmData[] = reduxData.api.filter(
+      (film: FilmData) => {
+        const numYear: number = Number(year);
+        const numReleaseDate: number = Number(film.release_date);
+        return numReleaseDate % numYear < 10 && 0 < numReleaseDate % numYear;
+      }
+    );
 
     switch (year) {
       case year:

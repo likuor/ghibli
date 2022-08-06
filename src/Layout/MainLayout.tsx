@@ -6,13 +6,10 @@ import FavoriteList from '../pages/FavoriteList';
 import SearchBar from '../components/SearchBar';
 import { Routes, Route, Link } from 'react-router-dom';
 import FetchApi from '../helper/FetchApi';
-import { useSelector } from 'react-redux';
-import { reduxDataObj } from '../interface/Interface';
 
 const { Header, Content, Footer, Sider } = Layout;
 
 const Main: FC = () => {
-  const reduxData: reduxDataObj = useSelector((state: reduxDataObj) => state);
   FetchApi();
 
   return (
@@ -74,7 +71,7 @@ const Main: FC = () => {
             }}
           >
             <Routes>
-              <Route path='/' element={<CardList films={reduxData} />} />
+              <Route path='/' element={<CardList />} />
               <Route path='/favorite' element={<FavoriteList />} />;
             </Routes>
           </div>

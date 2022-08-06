@@ -1,27 +1,29 @@
 import { useSelector, useDispatch } from 'react-redux';
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { LikeOutlined, HeartFilled, DislikeOutlined } from '@ant-design/icons';
 import { Card, Modal, Button } from 'antd';
 import style from './Cards.module.css';
+import { FilmData, reduxDataObj } from '../interface/Interface';
+import { ADD_FAVORITE } from '../redux/favorites/actions';
+import { REMOVE_FAVORITE } from '../redux/favorites/actions';
 
 type Props = {
-  film: any;
+  film: FilmData;
   color: string;
 };
 
-const { Meta } = Card;
-
-const Cards: React.FC<Props> = (props) => {
-  const { film, color }: any = props;
-  const favoriteData: any = useSelector((state: any) => state.favorites);
+const Cards: FC<Props> = (props) => {
+  const { Meta } = Card;
+  const { film, color } = props;
+  const favoriteData = useSelector((state: reduxDataObj) => state.favorites);
   const dispatch = useDispatch();
-  const [isModalVisible, setIsModalVisible]: any = useState<boolean>(false);
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
-  const changeFavorite = (film: any) => {
-    if (favoriteData.find((favFilm: any) => favFilm.id === film.id)) {
-      dispatch({ type: 'REMOVE_FAVORITE', payload: film, color: 'gray' });
+  const changeFavorite = (film: FilmData) => {
+    if (favoriteData.find((favFilm: FilmData) => favFilm.id === film.id)) {
+      dispatch({ type: REMOVE_FAVORITE, payload: film, color: 'gray' });
     } else {
-      dispatch({ type: 'ADD_FAVORITE', payload: film, color: 'red' });
+      dispatch({ type: ADD_FAVORITE, payload: film, color: 'red' });
     }
   };
 

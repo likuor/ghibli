@@ -1,38 +1,41 @@
+import { FC } from 'react';
 import { Input } from 'antd';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { SearchOutlined } from '@ant-design/icons';
+import { FilmData, reduxDataObj } from '../interface/Interface';
+import { SEARCH_FILM } from '../redux/searchResult/actions';
 
-const SearchBar: React.FC = () => {
-  const state = useSelector((state: any) => state.api);
+const SearchBar: FC = () => {
+  const state = useSelector((state: reduxDataObj) => state.api);
   const dispatch = useDispatch();
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState<string>('');
 
-  const makeSearchResult = () => {
-    let resArr: any = [];
-    state.filter((element: any) => {
-      if (
-        (searchValue && element.title.toLowerCase().includes(searchValue)) ||
-        element.title.includes(searchValue)
-      ) {
-        resArr.push(element);
-      }
-      return resArr;
-    });
-    return resArr;
-  };
-
-  const handleChange = (event: any) => {
-    setSearchValue(event.target.value);
+  const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
+    const inputVal = event.currentTarget.value;
+    setSearchValue(inputVal);
   };
 
   useEffect(() => {
+    const makeSearchResult = () => {
+      let searchedFilms: FilmData[] = [];
+      state.filter((element: FilmData) => {
+        if (
+          (searchValue && element.title.toLowerCase().includes(searchValue)) ||
+          element.title.includes(searchValue)
+        ) {
+          searchedFilms.push(element);
+        }
+        return searchedFilms;
+      });
+      return searchedFilms;
+    };
+
     dispatch({
-      type: 'SEARCH_FILM',
+      type: SEARCH_FILM,
       payload: makeSearchResult(),
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchValue]);
+  }, [dispatch, state, searchValue]);
 
   return (
     <>
