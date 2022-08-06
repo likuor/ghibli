@@ -1,18 +1,33 @@
-export const ADD_FAVORITE = 'ADD_FAVORITE';
-export const REMOVE_FAVORITE = 'REMOVE_FAVORITE';
+interface FilmData {
+  color: string;
+  description: string;
+  director: string;
+  id: string;
+  image: string;
+  locations: string;
+  movie_banner: string;
+  original_title: string;
+  original_title_romanised: string;
+  people: string[];
+  release_date: string;
+  rt_score: string;
+  running_time: string;
+  species: string[];
+  title: string;
+  url: string;
+  vehicles: string[];
+}
 
-export const addFavorite = (film: any) => {
+export const addFavorite = (film: FilmData) => {
   return {
     type: 'ADD_FAVORITE',
     payload: { film },
-    color: 'red',
   };
 };
 
-export const removeFavorite = (film: any) => {
+export const removeFavorite = (film: FilmData) => {
   return {
     type: 'REMOVE_FAVORITE',
     payload: { film },
-    color: 'gray',
   };
 };
