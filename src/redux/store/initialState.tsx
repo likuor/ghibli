@@ -1,7 +1,7 @@
 const initialState = {
   favorites: [],
   getApi: [],
-  searchFilm: [],
+  search: [],
 };
 
 export default initialState;

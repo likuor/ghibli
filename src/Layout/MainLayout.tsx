@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { HeartOutlined, HomeOutlined } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import CardList from '../pages/CardList';
@@ -6,36 +7,11 @@ import SearchBar from '../components/SearchBar';
 import { Routes, Route, Link } from 'react-router-dom';
 import FetchApi from '../helper/FetchApi';
 import { useSelector } from 'react-redux';
+import { reduxDataObj } from '../interface/Interface';
 
 const { Header, Content, Footer, Sider } = Layout;
 
-const Main: React.FC = () => {
-  interface FilmData {
-    color: string;
-    description: string;
-    director: string;
-    id: string;
-    image: string;
-    locations: string;
-    movie_banner: string;
-    original_title: string;
-    original_title_romanised: string;
-    people: string[];
-    release_date: string;
-    rt_score: string;
-    running_time: string;
-    species: string[];
-    title: string;
-    url: string;
-    vehicles: string[];
-  }
-
-  interface reduxDataObj {
-    api: FilmData[];
-    favorites: FilmData[];
-    search: FilmData[];
-  }
-
+const Main: FC = () => {
   const reduxData: reduxDataObj = useSelector((state: reduxDataObj) => state);
   FetchApi();
 

@@ -1,9 +1,20 @@
-import * as Actions from './actions';
 import initialState from '../store/initialState';
+import { FilmData } from '../../interface/Interface';
+import { SEARCH_FILM } from './actions';
 
-export const searchFilm = (state: any = initialState.getApi, action: any) => {
+type Action = {
+  type: string;
+  payload: FilmData[];
+};
+
+type State = FilmData[];
+
+export const searchFilm = (
+  state: State = initialState.search,
+  action: Action
+) => {
   switch (action.type) {
-    case Actions.SEARCH_FILM:
+    case SEARCH_FILM:
       return [...action.payload];
 
     default:

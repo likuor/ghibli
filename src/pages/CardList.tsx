@@ -1,40 +1,16 @@
+import { FC, useState } from 'react';
 import Cards from '../components/Cards';
 import style from './CardList.module.css';
 import { Typography } from 'antd';
 import DropDowns from '../components/DropDowns';
-import React, { useState } from 'react';
-
-interface FilmData {
-  color: string;
-  description: string;
-  director: string;
-  id: string;
-  image: string;
-  locations: string;
-  movie_banner: string;
-  original_title: string;
-  original_title_romanised: string;
-  people: string[];
-  release_date: string;
-  rt_score: string;
-  running_time: string;
-  species: string[];
-  title: string;
-  url: string;
-  vehicles: string[];
-}
-
-interface reduxDataObj {
-  api: FilmData[];
-  favorites: FilmData[];
-  search: FilmData[];
-}
+import { FilmData } from '../interface/Interface';
+import { reduxDataObj } from '../interface/Interface';
 
 interface Props {
   films: reduxDataObj;
 }
 
-const CardList: React.FC<Props> = (props) => {
+const CardList: FC<Props> = (props) => {
   const { Title } = Typography;
   const films: reduxDataObj = props.films;
   const [categoryYear, setCategoryYear] = useState<string>('1980');
