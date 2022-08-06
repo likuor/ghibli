@@ -4,32 +4,72 @@ import { Typography } from 'antd';
 import DropDowns from '../components/DropDowns';
 import React, { useState } from 'react';
 
-type Props = {
-  films: any;
-};
+interface FilmData {
+  color: string;
+  description: string;
+  director: string;
+  id: string;
+  image: string;
+  locations: string;
+  movie_banner: string;
+  original_title: string;
+  original_title_romanised: string;
+  people: string[];
+  release_date: string;
+  rt_score: string;
+  running_time: string;
+  species: string[];
+  title: string;
+  url: string;
+  vehicles: string[];
+}
+
+interface reduxDataObj {
+  api: FilmData[];
+  favorites: FilmData[];
+  search: FilmData[];
+}
+
+interface Props {
+  films: reduxDataObj;
+}
 
 const CardList: React.FC<Props> = (props) => {
   const { Title } = Typography;
-  const { films }: any = props;
+  const films: reduxDataObj = props.films;
   const [categoryYear, setCategoryYear] = useState<string>('1980');
 
-  const renderSwitch = (year: string) => {
-    const numyear: number = Number(year);
-    const res: [] = films.api.filter((film: any) => {
-      return (
-        film.release_date % numyear < 10 && film.release_date % numyear > 0
-      );
+  const renderFilms = () => {
+    return films && films.search.length !== 0
+      ? films.search.map((film: FilmData, index: number) => (
+          <li key={index} className={style.cardList}>
+            <Cards film={film} color={film.color} />
+          </li>
+        ))
+      : films.api.map((film: FilmData, index: number) => (
+          <li key={index} className={style.cardList}>
+            <Cards film={film} color={film.color} />
+          </li>
+        ));
+  };
+
+  const renderCategorizedFilms = (year: string) => {
+    const categorizedFilms: FilmData[] = films.api.filter((film: FilmData) => {
+      const numYear: number = Number(year);
+      const numReleaseDate: number = Number(film.release_date);
+      return numReleaseDate % numYear < 10 && 0 < numReleaseDate % numYear;
     });
 
     switch (year) {
       case year:
-        return res.map((film: any, index: number) => (
+        return categorizedFilms.map((film: FilmData, index: number) => (
           <li key={index} className={style.cardList}>
             <Cards film={film} color={film.color} />
           </li>
         ));
 
       default:
+        console.log('ERR');
         return 'the others';
     }
   };
@@ -38,19 +78,7 @@ const CardList: React.FC<Props> = (props) => {
     <>
       <div>
         <Title level={3}>All movies</Title>
-        <ul className={style.cardListContainer}>
-          {films && films.search.length !== 0
-            ? films.search.map((film: any, index: number) => (
-                <li key={index} className={style.cardList}>
-                  <Cards film={film} color={film.color} />
-                </li>
-              ))
-            : films.api.map((film: any, index: number) => (
-                <li key={index} className={style.cardList}>
-                  <Cards film={film} color={film.color} />
-                </li>
-              ))}
-        </ul>
+        <ul className={style.cardListContainer}>{renderFilms()}</ul>
       </div>
 
       <div>
@@ -61,7 +89,7 @@ const CardList: React.FC<Props> = (props) => {
           />
         </Title>
         <ul className={style.cardListContainer}>
-          {renderSwitch(categoryYear)}
+          {renderCategorizedFilms(categoryYear)}
         </ul>
       </div>
     </>

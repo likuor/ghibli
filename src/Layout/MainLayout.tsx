@@ -9,8 +9,35 @@ import { useSelector } from 'react-redux';
 
 const { Header, Content, Footer, Sider } = Layout;
 
-const Main = () => {
-  const reduxData: any = useSelector((state: any) => state);
+const Main: React.FC = () => {
+  interface FilmData {
+    color: string;
+    description: string;
+    director: string;
+    id: string;
+    image: string;
+    locations: string;
+    movie_banner: string;
+    original_title: string;
+    original_title_romanised: string;
+    people: string[];
+    release_date: string;
+    rt_score: string;
+    running_time: string;
+    species: string[];
+    title: string;
+    url: string;
+    vehicles: string[];
+  }
+
+  interface reduxDataObj {
+    api: FilmData[];
+    favorites: FilmData[];
+    search: FilmData[];
+  }
+
+  const reduxData: reduxDataObj = useSelector((state: reduxDataObj) => state);
+  FetchApi();
 
   return (
     <Layout>
@@ -71,12 +98,7 @@ const Main = () => {
             }}
           >
             <Routes>
-              <Route
-                path='/'
-                element={
-                  <CardList films={reduxData === [] ? reduxData : FetchApi()} />
-                }
-              />
+              <Route path='/' element={<CardList films={reduxData} />} />
               <Route path='/favorite' element={<FavoriteList />} />;
             </Routes>
           </div>

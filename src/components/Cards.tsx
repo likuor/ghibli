@@ -19,10 +19,8 @@ const Cards: React.FC<Props> = (props) => {
 
   const changeFavorite = (film: any) => {
     if (favoriteData.find((favFilm: any) => favFilm.id === film.id)) {
-      console.log('remove', film.title);
       dispatch({ type: 'REMOVE_FAVORITE', payload: film, color: 'gray' });
     } else {
-      console.log('add', film.title);
       dispatch({ type: 'ADD_FAVORITE', payload: film, color: 'red' });
     }
   };

@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const FetchApi = () => {
-  const films = useSelector((state: any) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,8 +20,6 @@ const FetchApi = () => {
     };
     getFilms();
   }, [dispatch]);
-
-  return films;
 };
 
 export default FetchApi;

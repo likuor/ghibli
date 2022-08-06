@@ -1,18 +1,51 @@
-import * as Actions from './actions';
 import initialState from '../store/initialState';
 
+interface FilmData {
+  color: string;
+  description: string;
+  director: string;
+  id: string;
+  image: string;
+  locations: string;
+  movie_banner: string;
+  original_title: string;
+  original_title_romanised: string;
+  people: string[];
+  release_date: string;
+  rt_score: string;
+  running_time: string;
+  species: string[];
+  title: string;
+  url: string;
+  vehicles: string[];
+}
+
+type Actions =
+  | {
+      type: 'ADD_FAVORITE';
+      payload: FilmData;
+      color: 'red';
+    }
+  | {
+      type: 'REMOVE_FAVORITE';
+      payload: FilmData;
+      color: 'gray';
+    };
+
+type State = FilmData[];
+
 export const favoriteReducer = (
-  state: any = initialState.favorites,
-  action: any
+  state: State = initialState.favorites,
+  action: Actions
 ) => {
   switch (action.type) {
-    case Actions.ADD_FAVORITE:
+    case 'ADD_FAVORITE':
       action.payload.color = action.color;
       return (state = [...state, action.payload]);
 
-    case Actions.REMOVE_FAVORITE:
-      const filmKey = state.findIndex((element: any) => {
-        return element.id === action.payload.id;
+    case 'REMOVE_FAVORITE':
+      const filmKey = state.findIndex((film) => {
+        return film.id === action.payload.id;
       });
       state[filmKey].color = action.color;
       state.splice(filmKey, 1);
