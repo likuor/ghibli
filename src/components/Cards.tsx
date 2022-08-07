@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import React, { FC, useState } from 'react';
-import { LikeOutlined, HeartFilled, DislikeOutlined } from '@ant-design/icons';
+import { HeartFilled } from '@ant-design/icons';
 import { Card, Modal, Button } from 'antd';
 import style from './Cards.module.css';
 import { FilmData, reduxDataObj } from '../interface/Interface';
