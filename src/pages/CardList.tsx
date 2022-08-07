@@ -3,6 +3,7 @@ import { Typography } from 'antd';
 import DropDowns from '../components/DropDowns';
 import AllMovies from '../components/AllMovies';
 import CategorizedMovies from '../components/CategorizedMovies';
+import style from './styles/CardList.module.css';
 
 const CardList: FC = () => {
   const { Title } = Typography;
@@ -10,12 +11,12 @@ const CardList: FC = () => {
 
   return (
     <>
-      <div>
+      <div className={style.container}>
         <Title level={3}>All movies</Title>
         <AllMovies />
       </div>
 
-      <div>
+      <div className={style.container}>
         <Title level={3}>
           <DropDowns
             categoryYear={categoryYear}
