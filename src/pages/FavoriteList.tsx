@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
 import Cards from '../components/Cards';
-import style from './CardList.module.css';
+import style from '../components/styles/MovieSection.module.css';
 import { FilmData, reduxDataObj } from '../interface/Interface';
 
 const Favorite: FC = () => {
