@@ -45,7 +45,6 @@ const Cards: FC<Props> = (props) => {
       hoverable
       cover={<img src={film.image} alt={film.title} onClick={showModal} />}
       actions={[
-        <LikeOutlined key='like' />,
         <HeartFilled
           key='heart'
           onClick={() => changeFavorite(film)}
@@ -53,11 +52,9 @@ const Cards: FC<Props> = (props) => {
             color: color,
           }}
         />,
-        <DislikeOutlined key='dislike' />,
       ]}
     >
       <Meta
-        // avatar={<Avatar src='https://joeschmoe.io/api/v1/random' />}
         style={{ fontSize: '14px' }}
         title={film.title}
         description={`Rating: ${film.rt_score}`}

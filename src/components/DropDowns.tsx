@@ -52,7 +52,7 @@ const DropDowns: FC<Props> = (props) => {
       <Typography.Link>
         <Space>
           {categoryYear}
-          <DownOutlined style={{ fontSize: '0.9vw' }} />
+          <DownOutlined />
         </Space>
       </Typography.Link>
     </Dropdown>
