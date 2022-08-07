@@ -1,20 +1,24 @@
+import { FC } from 'react';
 import { useSelector } from 'react-redux';
 import Cards from '../components/Cards';
 import style from './CardList.module.css';
+import { FilmData, reduxDataObj } from '../interface/Interface';
 
-const Favorite = () => {
-  const favoriteData = useSelector((state: any) => state.favorites);
+const Favorite: FC = () => {
+  const favoriteData = useSelector((state: reduxDataObj) => state.favorites);
 
-  return (
-    <ul className={style.cardListContainer}>
-      {favoriteData &&
-        favoriteData.map((film: any, index: number) => (
-          <li key={index} className={style.cardList}>
-            <Cards film={film} color={film.color} />
-          </li>
-        ))}
-    </ul>
-  );
+  const renderFavorites = () => {
+    return (
+      favoriteData &&
+      favoriteData.map((film: FilmData, index: number) => (
+        <li key={index} className={style.cardList}>
+          <Cards film={film} color={film.color} />
+        </li>
+      ))
+    );
+  };
+
+  return <ul className={style.cardListContainer}>{renderFavorites()}</ul>;
 };
 
 export default Favorite;

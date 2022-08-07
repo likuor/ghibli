@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { FilmData } from '../interface/Interface';
+import { GET_API_DATA } from '../redux/getApi/actions';
 
 const FetchApi = () => {
   const dispatch = useDispatch();
@@ -9,12 +11,12 @@ const FetchApi = () => {
       const res = await fetch('https://ghibliapi.herokuapp.com/films');
       const data = await res.json();
 
-      data.forEach((element: any) => {
-        element.color = 'gray';
+      data.forEach((film: FilmData) => {
+        film.color = 'gray';
       });
 
       dispatch({
-        type: 'GET_API_DATA',
+        type: GET_API_DATA,
         payload: data,
       });
     };

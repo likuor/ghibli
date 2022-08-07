@@ -1,38 +1,32 @@
 import { DownOutlined } from '@ant-design/icons';
 import { Dropdown, Menu, Space, Typography } from 'antd';
-import React from 'react';
+import React, { FC } from 'react';
 
 type Props = {
   categoryYear: string;
-  setCategoryYear: any;
+  setCategoryYear: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const DropDowns: React.FC<Props> = (props) => {
-  const { categoryYear, setCategoryYear }: any = props;
+const DropDowns: FC<Props> = (props) => {
+  const { categoryYear, setCategoryYear } = props;
 
   const makeDropDown = () => {
     const GHIBLI_STARTED_YEAR: number = 1980;
     const PER_YEAR: number = 10;
     const thisYear: number = new Date().getFullYear();
 
-    interface DropDowntObj {
+    interface DropDownOption {
       key: string;
       label: number;
     }
-
-    interface DropDownArr {
-      key: string;
-      label: number;
-    }
-
-    const DropDownItems: DropDownArr[] = [];
+    const DropDownItems: DropDownOption[] = [];
 
     for (
       let index = GHIBLI_STARTED_YEAR;
       index < thisYear;
       index = index + PER_YEAR
     ) {
-      const dropDwonItem: DropDowntObj = {
+      const dropDwonItem = {
         key: index.toString(),
         label: index,
       };
@@ -58,7 +52,7 @@ const DropDowns: React.FC<Props> = (props) => {
       <Typography.Link>
         <Space>
           {categoryYear}
-          <DownOutlined style={{ fontSize: '0.9vw' }} />
+          <DownOutlined />
         </Space>
       </Typography.Link>
     </Dropdown>

@@ -1,6 +1,6 @@
 import initialState from '../store/initialState';
 import { FilmData } from '../../interface/Interface';
-import { GET_API_DATA } from './actions';
+import { SEARCH_FILM } from './actions';
 
 type Action = {
   type: string;
@@ -9,12 +9,12 @@ type Action = {
 
 type State = FilmData[];
 
-export const getApiReducer = (
-  state: State = initialState.getApi,
+export const searchReducer = (
+  state: State = initialState.search,
   action: Action
 ) => {
   switch (action.type) {
-    case GET_API_DATA:
+    case SEARCH_FILM:
       return [...action.payload];
 
     default:
