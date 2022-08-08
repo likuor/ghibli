@@ -1,5 +1,5 @@
 import initialState from '../store/initialState';
-import { FilmData } from '../../interface/Interface';
+import { FilmData } from '../../Types/Types';
 import { GET_API_DATA } from './actions';
 
 type Action = {

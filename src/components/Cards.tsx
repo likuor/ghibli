@@ -3,7 +3,7 @@ import { FC, useState } from 'react';
 import { HeartFilled } from '@ant-design/icons';
 import { Card, Modal, Button } from 'antd';
 import style from './styles/Cards.module.css';
-import { FilmData, reduxDataObj } from '../interface/Interface';
+import { FilmData, reduxDataObj } from '../Types/Types';
 import { ADD_FAVORITE } from '../redux/favorites/actions';
 import { REMOVE_FAVORITE } from '../redux/favorites/actions';
 
