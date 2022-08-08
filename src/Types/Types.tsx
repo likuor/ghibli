@@ -1,4 +1,4 @@
-export interface FilmData {
+export type FilmData = {
   color: string;
   description: string;
   director: string;
@@ -16,10 +16,10 @@ export interface FilmData {
   title: string;
   url: string;
   vehicles: string[];
-}
+};
 
-export interface reduxDataObj {
+export type reduxDataObj = {
   api: FilmData[];
   favorites: FilmData[];
   search: FilmData[];
-}
+};

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { FilmData } from '../interface/Interface';
+import { FilmData } from '../Types/Types';
 import { GET_API_DATA } from '../redux/getApi/actions';
 
 const FetchApi = () => {

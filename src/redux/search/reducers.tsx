@@ -1,5 +1,5 @@
 import initialState from '../store/initialState';
-import { FilmData } from '../../interface/Interface';
+import { FilmData } from '../../Types/Types';
 import { SEARCH_FILM } from './actions';
 
 type Action = {

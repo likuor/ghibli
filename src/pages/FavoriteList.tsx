@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { useSelector } from 'react-redux';
 import Cards from '../components/Cards';
 import style from '../components/styles/MovieSection.module.css';
-import { FilmData, reduxDataObj } from '../interface/Interface';
+import { FilmData, reduxDataObj } from '../Types/Types';
 
 const Favorite: FC = () => {
   const favoriteData = useSelector((state: reduxDataObj) => state.favorites);

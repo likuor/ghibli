@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Cards from './Cards';
-import { FilmData, reduxDataObj } from '../interface/Interface';
+import { FilmData, reduxDataObj } from '../Types/Types';
 import style from './styles/MovieSection.module.css';
 import { useSelector } from 'react-redux';
 

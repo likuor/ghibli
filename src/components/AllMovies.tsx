@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Cards from './Cards';
 import style from './styles/MovieSection.module.css';
 import { useSelector } from 'react-redux';
-import { FilmData, reduxDataObj } from '../interface/Interface';
+import { FilmData, reduxDataObj } from '../Types/Types';
 
 const AllMovies: FC = () => {
   const reduxData: reduxDataObj = useSelector((state: reduxDataObj) => state);

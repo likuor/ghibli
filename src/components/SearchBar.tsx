@@ -3,7 +3,7 @@ import { Input } from 'antd';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { SearchOutlined } from '@ant-design/icons';
-import { FilmData, reduxDataObj } from '../interface/Interface';
+import { FilmData, reduxDataObj } from '../Types/Types';
 import { SEARCH_FILM } from '../redux/search/actions';
 
 const SearchBar: FC = () => {
