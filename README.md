@@ -2,9 +2,7 @@
 
 _Managing and sharing Japanese popular Ghibli movies that you love!_
 
-<!-- ![nodeblogapp-pic11](https://user-images.githubusercontent.com/58070973/165789171-582af007-6304-4ae9-8ab4-a240ad7d6498.png) -->
-![nodeblogapp-pic11](https://github.com/likuor/portfolio-ts/blob/main/public/image/works/Ghibli/Ghibli.png)
-
+![pic1](https://github.com/likuor/portfolio-ts/blob/main/public/image/works/Ghibli/Ghibli.png)
 
 
 This is a React.js app with Redux to learn deeply. The application is built with popular UI library AntDesign.
@@ -19,14 +17,8 @@ My favorite movie team, Ghibli studio made tons of popular movies in the world. 
 
 ### What was challenging?
 
-How Redux works (action, view, dispatch, store, reducer), Customizeing AntDesign.
-<!-- 
-### Goals for Improvement
+How Redux works (action, view, dispatch, store, reducer), Customizeing AntDesign. And relation of rendering system and redux dispatching. When I made categories function, it made me suffer a lot.
 
-I regret I didn't implement Redux for this project. I should have designed file structures first to see how big is this project going to be. If so, I could have used Redux for a more approachable and organized data design. My improvement for my next project will be sufficient preparation including mockup design, file structure, database structure, and research of language, libraries, and APIs. -->
-<!-- 
-![nodeblogapp-pic12](https://user-images.githubusercontent.com/58070973/165789181-a316eb85-b05a-4d27-b4c7-d966af746686.png)
+![pic2](https://github.com/likuor/portfolio-ts/blob/main/public/image/works/Ghibli/Ghibli_detail.png)
 
-![nodeblogapp-pic13](https://user-images.githubusercontent.com/58070973/165789183-e1dc1646-3f68-4c41-93a7-901d63a56912.png)
-
-![nodeblogapp-pic14](https://user-images.githubusercontent.com/58070973/165789185-14dd7fa2-dba2-4306-95b7-7a1010972024.png) -->
+![pic3](https://github.com/likuor/portfolio-ts/blob/main/public/image/works/Ghibli/Ghibli_list.png)
