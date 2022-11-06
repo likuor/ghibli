@@ -1,47 +1,32 @@
-# Getting Started with Create React App
+## Ghibli Exhibition
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+_Managing and sharing Japanese popular Ghibli movies that you love!_
 
-## Available Scripts
+<!-- ![nodeblogapp-pic11](https://user-images.githubusercontent.com/58070973/165789171-582af007-6304-4ae9-8ab4-a240ad7d6498.png) -->
+![nodeblogapp-pic11](https://github.com/likuor/portfolio-ts/blob/main/public/image/works/Ghibli/Ghibli.png)
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This is a React.js app with Redux to learn deeply. The application is built with popular UI library AntDesign.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **Spec:** Typescript, React, AntDesign, Redux
 
-### `npm test`
+- **Check App:** [Check it out!](https://ghibli-exhibition.netlify.app/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Why made me create this app?
 
-### `npm run build`
+My favorite movie team, Ghibli studio made tons of popular movies in the world. Whenever I talk about movies from the team, I couldn't translate to English title and what is like so I decided to make a simple bookmark app to show those great movies. Also, I wanted to learn Redux well and check how to use Antdesign in my curiosity. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### What was challenging?
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+How Redux works (action, view, dispatch, store, reducer), Customizeing AntDesign.
+<!-- 
+### Goals for Improvement
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+I regret I didn't implement Redux for this project. I should have designed file structures first to see how big is this project going to be. If so, I could have used Redux for a more approachable and organized data design. My improvement for my next project will be sufficient preparation including mockup design, file structure, database structure, and research of language, libraries, and APIs. -->
+<!-- 
+![nodeblogapp-pic12](https://user-images.githubusercontent.com/58070973/165789181-a316eb85-b05a-4d27-b4c7-d966af746686.png)
 
-### `npm run eject`
+![nodeblogapp-pic13](https://user-images.githubusercontent.com/58070973/165789183-e1dc1646-3f68-4c41-93a7-901d63a56912.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-# ghibli
+![nodeblogapp-pic14](https://user-images.githubusercontent.com/58070973/165789185-14dd7fa2-dba2-4306-95b7-7a1010972024.png) -->
